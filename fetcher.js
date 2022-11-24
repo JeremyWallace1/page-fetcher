@@ -19,7 +19,7 @@ request(URL, (error, response, body) => {
   // edge case 3: url is invalid
   if (error) {
     if (error.code === 'ENOTFOUND') {
-      console.log(`${URL} is not a valid URL.`)
+      console.log(`${URL} is not a valid URL.`);
       process.exit();
     } else {
       console.log(error);
@@ -37,7 +37,7 @@ request(URL, (error, response, body) => {
   }
 });
 
-function writeTheFile(fileName, body) {
+const writeTheFile = function(fileName, body) {
   fs.writeFile(fileName, body, 'utf8', (err) => {
     if (err) {
       // edge case 2: file path is invalid
@@ -52,8 +52,8 @@ function writeTheFile(fileName, body) {
       fs.stat(fileName, (err, stats) => {
         console.log(`Downloaded and saved ${stats.size} bytes to ${fileName}`);
         process.exit();
-      })
+      });
     }
-  })
+  });
 };
 
